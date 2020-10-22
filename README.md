@@ -2,4 +2,4 @@
 # COMP-1510-Midterm-Hackathon
 
 Christine Le (A01235924)
-Alex Lee (A01236776)
+Alexander Lee (A01236776)
