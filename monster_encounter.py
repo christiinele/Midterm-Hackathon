@@ -9,7 +9,7 @@ def find_monster():
 
 def monster_generator():
   """Determine the type of monster"""
-  monster = ["", 5, ""]
+  monster = ["", 5, ""]  # monster name, health, attack type
   monster_type = rng.roll_4()
 
   if monster_type == 1:
@@ -86,7 +86,7 @@ def encounter_choice(character_health):
 def player_initiative(character_health, monster):
   """Simulates one turn if player rolls higher initative
 
-  A function which rolls 
+  A function which simulates damage taken/received if the player is first to move.
   
   :param character_health: 
   :param monster:
@@ -102,10 +102,8 @@ def player_initiative(character_health, monster):
     character_health -= monster_damage
     
     print(f"The {monster[0]} now has {monster[1]} health. It {monster[2]} you for {monster_damage} damage! You have {character_health} health left.")
-    if character_health <= 0:
-      return character_health
-    else: 
-      return character_health
+
+    return character_health
     
   else:
     print(f"You have defeated the {monster[0]}!")
@@ -149,7 +147,7 @@ def monster_encounter(character, monster):
       character[1] = monster_initiative(character[1], monster)
 
     else:
-      print("It's a stare down! No one attacks.")
+      print("It's a stare down! No one attacks successfully.")
 
   character[4] += 1
 

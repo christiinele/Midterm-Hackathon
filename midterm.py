@@ -7,6 +7,7 @@ Alexander Lee (A01236776)
 
 
 import monster_encounter
+import game_map
 
 
 def main():
