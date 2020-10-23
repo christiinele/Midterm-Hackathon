@@ -77,8 +77,80 @@ def encounter_choice(character_health):
         monster_damage = rng.roll_4()
         character_health -= monster_damage
         
-        print(f"The {monster[0]} stabbed you in the back for {monster_damage} as you were fleeing! Your HP is now {character_health}.")
+        print(f"The {monster[0]} {monster[2]} you in the back for {monster_damage} damage as you were fleeing! Your HP is now {character_health}.")
     else:
       print("Your input was invalid! Please enter fight or flee.")
 
   return character_health
+
+def player_initiative(character_health, monster):
+  """Simulates one turn if player rolls higher initative
+
+  A function which rolls 
+  
+  :param character_health: 
+  :param monster:
+  """
+  player_damage = rng.roll_6()
+  monster[1] -= player_damage
+  
+  print(f"You gain initiaive and strike first! You slice the {monster[0]} for {player_damage} damage!")
+  
+  if monster[1] > 0:
+    
+    monster_damage = rng.roll_6()
+    character_health -= monster_damage
+    
+    print(f"The {monster[0]} now has {monster[1]} health. It {monster[2]} you for {monster_damage} damage! You have {character_health} health left.")
+    if character_health <= 0:
+      return character_health
+    else: 
+      return character_health
+    
+  else:
+    print(f"You have defeated the {monster[0]}!")
+
+    return character_health
+
+
+def monster_initiative(character_health, monster):
+  monster_damage = rng.roll_6()
+
+  character_health -= monster_damage
+
+  print(f"The {monster[0]} gains initiative! It {monster[2]} you for {monster_damage}. You have {character_health} health left.")
+
+  if character_health <= 0:
+      return character_health
+
+  if character_health > 0:
+    player_damage = rng.roll_6()
+    monster[1] -= player_damage
+    
+    print(f"You brandish your trusty sword and do {player_damage} damage to the {monster[0]}!")
+    
+    if monster[1] < 0:
+      print(f"You have defeated the {monster[0]}!")
+
+      return character_health
+
+    else:
+
+      return character_health
+
+
+def monster_encounter(character, monster):
+  while character[1] > 0 and monster[1] > 0:
+
+    if check_initiative() == 0:
+      character[1] = player_initiative(character[1], monster)
+
+    elif check_initiative() == 1:      
+      character[1] = monster_initiative(character[1], monster)
+
+    else:
+      print("It's a stare down! No one attacks.")
+
+  character[4] += 1
+
+  return character
