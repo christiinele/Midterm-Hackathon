@@ -61,6 +61,7 @@ def encounter_choice(character_health):
   :param character: A list of the character's stats
   :precondition: list must be in the proper order: Name, HP, position x, position y, quest progress
   :postcondition: gives result of player's choice
+  :return: character's health if flee is selected
   """
   monster = monster_generator()
   encounter_choice = ""
@@ -88,8 +89,11 @@ def player_initiative(character_health, monster):
 
   A function which simulates damage taken/received if the player is first to move.
   
-  :param character_health: 
-  :param monster:
+  :param character_health: a positive integer, how much health the player currently has
+  :param monster: a positive integer, how much health the monster currently has
+  :precondition: numbers must be positive integers greater than zero
+  :postcondition: caculates the amount of damage each combatant takes
+  :return: how much health the player has left
   """
   player_damage = rng.roll_6()
   monster[1] -= player_damage
