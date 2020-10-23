@@ -5,12 +5,18 @@ Christine Le (A01235924)
 Alexander Lee (A01236776)
 """
 
-
 import monster_encounter
 import game_map
 
 
 def display_status(character_info):
+  """
+  Displays character info.
+
+  :param character_info: a list of the character's information: name, health, coordinates, and current quest progress.
+  :precondition: character_info must be a list.
+  :postcondition: prints character's info in a meaningful way to the user.
+  """
   for i in range(3):
     if i == 0:
       print(f"\nAdventurer: {character_info[i]}")

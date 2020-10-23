@@ -1,10 +1,12 @@
+
 def initialize_map():
-  """Generate a 5 by 5 map
+  """Generates a 5 by 5 map.
   
   Creates a map using 5 lists of 5 to show a 5 by 5 grid.
 
-  :return: 5 by 5 map
+  :return: a 5 by 5 map
   """
+  
   map = [["0", "0", "0", "0", "0"], 
   ["0", "0", "0", "0", "0"], 
   ["0", "0", "0", "0", "0"], 
@@ -15,7 +17,7 @@ def initialize_map():
 
 
 def current_location(current_position_x, current_position_y):
-  """Assign player position
+  """Assigns player position.
   
   A function which assigns the player, represented by 'x', a position on the map.
 
@@ -32,14 +34,14 @@ def current_location(current_position_x, current_position_y):
 
 
 def print_game_map(map):
-  """Display player on map
+  """Displays player on map.
 
   A function which prints the map with the player's location indicated by 'x'
   """
   print("\n")
 
-  for i in range(len(map)):
-    print(map[i])
+  for number in range(len(map)):
+    print(map[number])
 
   print("\n")
 
@@ -49,14 +51,15 @@ def validate_move(direction, current_position_x, current_position_y):
 
   A function which restricts the player's movement to the boundaries of the 5 by 5 map. To be used in combination with function 'movement'
 
-  :param direction: an integer from 1 to 4
-  :param current_position_x: an integer
-  :param current_position_y:
-  :precondition:
-  :postcondition:  
-  :return:
+  :param direction: a positive integer
+  :param current_position_x: a positive integer
+  :param current_position_y: a positive integer
+  :precondition: integer for direction parameter is from 1 to 4, integer for parameters current_position_x and current_position_y is from 0 to 4
+  :postcondition: passes as True
+  :return: True
 
-  do doctests for this one
+  >>> validate_move(1, 0, 0)
+  True
   """
   if direction == 1:
     if current_position_y != 0:
@@ -81,6 +84,14 @@ def validate_move(direction, current_position_x, current_position_y):
 
 
 def movement(character, direction):
+  """Move in a direction
+  
+  A function which changes the player's position. Either the player's current_position_x or current_position_y is changed, depeding on the direction parameter.
+
+  :param character: a list of the character's information: name, health, position x, position, quest progress
+  :param direction: a positive integer
+  :preconditon: characater list must be in proper order, direction must be in the range from 1 to 4.
+  """
   if direction == 1:  # North
     return character[2], character[3] - 1
   elif direction == 2:  # East
@@ -89,3 +100,6 @@ def movement(character, direction):
     return character[2], character[3] + 1
   elif direction == 4:  # West
     return character[2] - 1, character[3]
+
+import doctest
+doctest.testmod(verbose=True)

@@ -64,7 +64,7 @@ def check_initiative():
     return 1
 
 
-def encounter_choice(character_health):
+def encounter_choice(character):
   """Select whether to fight or flee from the monster
   
   When encountering a monster, the player can choose to either fight it or flee from it. This function is where the player provides that choice.
@@ -88,22 +88,22 @@ def encounter_choice(character_health):
 
       if encounter_choice == "1":
 
-        character_health = monster_encounter(character_health, monster)
+        character = monster_encounter(character, monster)
 
       elif encounter_choice == "2":
 
-        if rng.roll_10() == 1:
+        if rng.roll_10() != 0:
 
           monster_damage = rng.roll_4()
-          character_health -= monster_damage
+          character[1] -= monster_damage
           
-          print(f"\nThe {monster[0]} {monster[2]} you for {monster_damage} damage as you were fleeing! Your now have {character_health} health points remaining.")
+          print(f"\nThe {monster[0]} {monster[1]} you for {monster_damage} damage as you were fleeing! You now have {character[1]} health points remaining.")
           
     else:
 
       print("\nYour input was invalid! Please enter '1' to fight or '2' to flee.")
 
-  return character_health
+  return character
 
 def player_initiative(character_health, monster):
   """Simulates one turn if player rolls higher initative
