@@ -142,8 +142,10 @@ def main():
     
     direction = input("Your current position is represented by 'x'. Pick from one of the following options: \n\n 1. North \n 2. East \n 3. South \n 4. West \n 5. Check your status \n 6. Quit game \n\n")
 
+    # Checks if the user's input is valid
     if input_to_int(direction) != False:
 
+      # Shows status screen
       if input_to_int(direction) == 5:
 
         display_status(character)
@@ -152,12 +154,14 @@ def main():
 
         character[4] = 10
 
+      # Validates move
       elif game_map.validate_move(input_to_int(direction), character[2], character[3]):
 
+        # Updates character's coordinates
         character[2] = game_map.movement(character, input_to_int(direction))[0]
-
         character[3] = game_map.movement(character, input_to_int(direction))[1]
 
+        # If monster is found, initiate encounter
         if monster_encounter.find_monster():
 
           character = monster_encounter.encounter_choice(character)
@@ -166,6 +170,7 @@ def main():
 
           character[1] = health_restoration(character[1])
 
+  # If goal is reached, character dies, or user quits game
   post_game_message(character)
 
 
