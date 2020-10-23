@@ -6,12 +6,16 @@ Alexander Lee (A01236776)
 """
 
 
+import monster_encounter
+
+
 def main():
-    """Drives the program."""
+  """Drives the program."""
 
-    # Enter your code here.
+  print("Welcome, aspiring adventurer! Your village has an unethical rite of passage that requires you to kill three monsters upon turning sixteen. It is do or die, good luck! \n \n")
 
-    print("Hello, Chris!")
+  # Name, HP, position x, position y, quest progress
+  character = ["Bob", 10, 2, 4, 0]  
 
 
 if __name__ == "__main__":
