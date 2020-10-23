@@ -20,6 +20,8 @@ def current_location(current_position_x, current_position_y):
 
 
 def print_game_map(map):
+  print("\n")
+
   for i in range(len(map)):
     print(map[i])
 
@@ -34,22 +36,22 @@ def validate_move(direction, current_position_x, current_position_y):
     if current_position_y != 0:
       return True
     else:
-      print("\nYou run into a wall! You don't move anywhere. \n")
+      print("\nYou run into a wall! You don't move anywhere.")
   elif direction == 3:
     if current_position_y != 4:
       return True
     else:
-      print("\nYou run into a wall! You don't move anywhere. \n")  
+      print("\nYou run into a wall! You don't move anywhere.")  
   elif direction == 2:
     if current_position_x != 4:
       return True
     else:
-      print("\nYou run into a wall! You don't move anywhere. \n")  
+      print("\nYou run into a wall! You don't move anywhere.")  
   elif direction == 4:
     if current_position_x != 0:
       return True
     else:
-      print("\nYou run into a wall! You don't move anywhere. \n")
+      print("\nYou run into a wall! You don't move anywhere.")
 
 
 def movement(character, direction):
