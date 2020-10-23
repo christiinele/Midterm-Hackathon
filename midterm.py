@@ -46,15 +46,15 @@ def health_restoration(current_hp):
   :return: player's updated health
   
   >>> health_restoration(8)
-  You've restored two health points! Your current health is 10.
+  You've restored two health points! Your current health is at 10.
   10
   >>> health_restoration(10)
   10
   >>> health_restoration(9)
-  You've restored one health point! Your current health is 10.
+  You've restored one health point! Your current health is at 10.
   10
   >>> health_restoration(3)
-  You've restored two health points! Your current health is 5.
+  You've restored two health points! Your current health is at 5.
   5
   """
 
