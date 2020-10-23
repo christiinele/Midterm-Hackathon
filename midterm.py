@@ -7,28 +7,46 @@ Alexander Lee (A01236776)
 
 import monster_encounter
 import game_map
+import doctest
 
 
 def display_status(character_info):
-  """
-  Displays character info.
+  """Display character info
+
+  A function which displays the character's info: their name, hp, position, and progress
 
   :param character_info: a list of the character's information: name, health, coordinates, and current quest progress.
   :precondition: character_info must be a list.
   :postcondition: prints character's info in a meaningful way to the user.
   """
+
   for i in range(3):
+
     if i == 0:
+
       print(f"\nAdventurer: {character_info[i]}")
+
     elif i == 1:
+
       print(f"Current HP: {character_info[i]}/10")
+
     else:
+
       print(f"Current Quest Progress: {character_info[4]} of 3 monsters slain. \n")
 
 
 def health_restoration(current_hp): 
+  """Restore health
+
+  A function which restores the player's health. It is used if the character does not encounger a monster upon movement. 
+
+  :param current_hp: the character's current health.
+  :precondition: the character's health as a positive integer and if the character has moved a tile without encountering a monster
+  :postcondition: restores the character's health by one or two.
+  """
 
   if current_hp < 9:
+    
     current_hp += 2
 
     print(f"\nYou've restored two health points! Your current health is {current_hp}.\n")
@@ -41,6 +59,14 @@ def health_restoration(current_hp):
 
 
 def post_game_message(character):
+  """Give end game message
+
+  A function which prints a message at the end of the adventure.
+  
+  :param character: a list of the character's information: name, health, position x, position, quest progress
+  :precondition: list must be in the proper order: Name, HP, position x, position y, quest progress
+  :postcondition: prints end game message
+  """
   if character[4] == 3:
     print("\nCongratulations! You have passed the trial, honouring your village's tradition!")
   elif character[4] == 10:
@@ -50,11 +76,28 @@ def post_game_message(character):
 
 
 def input_to_int(value):
+  """Convert input to an integer
+
+  A function which takes the player input and ensures it is an integer.
+
+  :param value: user input, a number
+  :precondition: input is a number
+  :postcondition: converts the number from a string to an integer
+  :return: value as an integer
+
+  >>> input_to_int("1")
+  1
+  >>> input_to_int("0")
+  Your input was invalid. Please choose from one of the options next time.
+  False
+
+  """
+  
   if value == "1" or value == "2" or value == "3" or value == "4" or value == "5" or value == "6":
       value = int(value)
       return value
   else:
-    print("\nYour input was invalid. Please choose from one of the options next time.\n")
+    print("Your input was invalid. Please choose from one of the options next time.")
     return False
 
 
@@ -93,3 +136,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    print("\n")
+
+    doctest.testmod(verbose=True)
+    doctest.testfile('game_map.py', verbose=True)

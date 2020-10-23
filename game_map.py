@@ -1,3 +1,5 @@
+import midterm
+import doctest
 
 def initialize_map():
   """Generates a 5 by 5 map.
@@ -47,22 +49,23 @@ def print_game_map(map):
 
 
 def validate_move(direction, current_position_x, current_position_y):
-  """Determine whether the player can move in a direction
+  """Determine whether the player can move in a direction.
 
-  A function which restricts the player's movement to the boundaries of the 5 by 5 map. To be used in combination with function 'movement'
+  A function which restricts the player's movement to the boundaries of the 5 by 5 map. To be used in combination with function 'movement'.
 
-  :param direction: a positive integer
-  :param current_position_x: a positive integer
-  :param current_position_y: a positive integer
-  :precondition: integer for direction parameter is from 1 to 4, integer for parameters current_position_x and current_position_y is from 0 to 4
-  :postcondition: passes as True
-  :return: True
+  :param direction: a positive integer.
+  :param current_position_x: a positive integer.
+  :param current_position_y: a positive integer.
+  :precondition: integer for direction parameter is from 1 to 4, integer for parameters current_position_x and current_position_y is from 0 to 4.
+  :postcondition: passes as True or prints statement if not True.
+  :return: True or False.
 
   >>> validate_move(1, 0, 0)
   True
   >>> validate_move(2, 0, 5)
-  
+  "\nYou run into a wall! You don't move anywhere."  
   """
+  
   if direction == 1:
     if current_position_y != 0:
       return True
@@ -104,6 +107,3 @@ def movement(character, direction):
     return character[2], character[3] + 1
   elif direction == 4:  # West
     return character[2] - 1, character[3]
-
-import doctest
-doctest.testmod(verbose=True)
