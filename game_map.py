@@ -1,4 +1,10 @@
 def initialize_map():
+  """Generate a 5 by 5 map
+  
+  Creates a map using 5 lists of 5 to show a 5 by 5 grid.
+
+  :return: 5 by 5 map
+  """
   map = [["0", "0", "0", "0", "0"], 
   ["0", "0", "0", "0", "0"], 
   ["0", "0", "0", "0", "0"], 
@@ -9,6 +15,12 @@ def initialize_map():
 
 
 def current_location(current_position_x, current_position_y):
+  """Assign player position
+  
+  A function which assigns the player, represented by 'x', a position on the map.
+
+  :return: player location on map
+  """
 
   # Clears map
   map = initialize_map()
@@ -20,6 +32,10 @@ def current_location(current_position_x, current_position_y):
 
 
 def print_game_map(map):
+  """Display player on map
+
+  A function which prints the map with the player's location indicated by 'x'
+  """
   print("\n")
 
   for i in range(len(map)):
@@ -29,7 +45,12 @@ def print_game_map(map):
 
 
 def validate_move(direction, current_position_x, current_position_y):
-  """
+  """Determine whether the player can move in a direction
+
+  A function which restricts the player's movement to the boundaries of the 5 by 5 map. 
+
+  
+
   do doctests for this one
   """
   if direction == 1:
