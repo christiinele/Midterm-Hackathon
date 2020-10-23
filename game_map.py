@@ -34,24 +34,22 @@ def validate_move(direction, current_position_x, current_position_y):
     if current_position_y != 0:
       return True
     else:
-      print("\nYou run into a wall! You don't move anywhere.")
+      print("\nYou run into a wall! You don't move anywhere. \n")
   elif direction == 3:
     if current_position_y != 4:
       return True
     else:
-      print("\nYou run into a wall! You don't move anywhere.")  
+      print("\nYou run into a wall! You don't move anywhere. \n")  
   elif direction == 2:
     if current_position_x != 4:
       return True
     else:
-      print("\nYou run into a wall! You don't move anywhere.")  
+      print("\nYou run into a wall! You don't move anywhere. \n")  
   elif direction == 4:
     if current_position_x != 0:
       return True
     else:
-      print("\nYou run into a wall! You don't move anywhere.")
-  else:
-    print("\nYour input was invalid. Please choose from one of the options listed next time.")
+      print("\nYou run into a wall! You don't move anywhere. \n")
 
 
 def movement(character, direction):

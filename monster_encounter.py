@@ -68,19 +68,19 @@ def encounter_choice(character_health):
 
   print(f"You've encountered a(n) {monster[0]}!")
 
-  while encounter_choice != "fight" and encounter_choice != "flee":
-    encounter_choice = input("Will you fight or flee? ").lower().strip()
+  while encounter_choice != 1 and encounter_choice != 2:
+    encounter_choice = input("Will you 1. fight or 2. flee?").lower().strip()
 
-    if encounter_choice == "fight":
+    if encounter_choice == 1:
       character_health = monster_encounter(character_health, monster)
-    elif encounter_choice == "flee":
+    elif encounter_choice == 2:
       if rng.roll_10() == 1:
         monster_damage = rng.roll_4()
         character_health -= monster_damage
         
-        print(f"The {monster[0]} {monster[2]} you in the back for {monster_damage} damage as you were fleeing! Your HP is now {character_health}.")
+        print(f"The {monster[0]} {monster[2]} you for {monster_damage} damage as you were fleeing! Your HP is now {character_health}.")
     else:
-      print("Your input was invalid! Please enter fight or flee.")
+      print("Your input was invalid! Please enter '1' to fight or '2' to flee.")
 
   return character_health
 
