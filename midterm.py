@@ -31,11 +31,11 @@ def health_restoration(current_hp):
   if current_hp < 9:
     current_hp += 2
 
-    print("\nYou've restored two health points!\n")
+    print(f"\nYou've restored two health points! Your current health is {current_hp}.\n")
   elif current_hp < 10:
     current_hp += 1
 
-    print("\nYou've restored one health point!\n")
+    print(f"\nYou've restored one health point! Your current health is {current_hp}.\n")
 
   return current_hp
 

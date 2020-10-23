@@ -92,7 +92,7 @@ def encounter_choice(character):
 
       elif encounter_choice == "2":
 
-        if rng.roll_10() != 0:
+        if rng.roll_10() == 1:
 
           monster_damage = rng.roll_4()
           character[1] -= monster_damage

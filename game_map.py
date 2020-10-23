@@ -60,6 +60,8 @@ def validate_move(direction, current_position_x, current_position_y):
 
   >>> validate_move(1, 0, 0)
   True
+  >>> validate_move(2, 0, 5)
+  
   """
   if direction == 1:
     if current_position_y != 0:
@@ -90,7 +92,9 @@ def movement(character, direction):
 
   :param character: a list of the character's information: name, health, position x, position, quest progress
   :param direction: a positive integer
-  :preconditon: characater list must be in proper order, direction must be in the range from 1 to 4.
+  :preconditon: characater list must be in proper order, direction must be from 1 to 4.
+  :postcondition: moves the character
+  :return: new position of character
   """
   if direction == 1:  # North
     return character[2], character[3] - 1
