@@ -18,6 +18,16 @@ def main():
   # Name, HP, position x, position y, quest progress
   character = ["Bob", 10, 2, 4, 0]  
 
+  game_map.print_game_map(game_map.current_location(character[2], character[3]))
+
+  direction = int(input("Your current position is represented by 'x'. Pick from one of the following options: 1. north, 2. east, 3. south, 4. west, 5. check your current status, 6. quit game. "))
+
+  if game_map.validate_move(direction, character[2], character[3]):
+    character[2] = game_map.movement(character, direction)[0]
+    character[3] = game_map.movement(character, direction)[1]
+
+    game_map.print_game_map(game_map.current_location(character[2], character[3]))
+
 
 if __name__ == "__main__":
     main()
