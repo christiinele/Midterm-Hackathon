@@ -154,7 +154,7 @@ def monster_initiative(character_health, monster):
 
   character_health -= monster_damage
 
-  print(f"\nThe {monster[0]} gains initiative! It {monster[1]} you for {monster_damage}. You have {character_health} health points remaining.")
+  print(f"\nThe {monster[0]} gains initiative! It {monster[1]} you for {monster_damage} damage. You have {character_health} health points remaining.")
 
   if character_health <= 0:
 

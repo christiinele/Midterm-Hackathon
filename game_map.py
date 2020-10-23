@@ -43,6 +43,7 @@ def print_game_map(map):
   print("\n")
 
   for number in range(len(map)):
+
     print(map[number])
 
   print("\n")
@@ -67,24 +68,43 @@ def validate_move(direction, current_position_x, current_position_y):
   """
   
   if direction == 1:
+
     if current_position_y != 0:
+
       return True
+
     else:
+
       print("\nYou run into a wall! You don't move anywhere.")
+
   elif direction == 3:
+
     if current_position_y != 4:
+
       return True
+
     else:
+
       print("\nYou run into a wall! You don't move anywhere.")  
+
   elif direction == 2:
+
     if current_position_x != 4:
+
       return True
+
     else:
+
       print("\nYou run into a wall! You don't move anywhere.")  
+
   elif direction == 4:
+
     if current_position_x != 0:
+
       return True
+
     else:
+
       print("\nYou run into a wall! You don't move anywhere.")
 
 
@@ -99,11 +119,19 @@ def movement(character, direction):
   :postcondition: moves the character
   :return: new position of character
   """
+
   if direction == 1:  # North
+
     return character[2], character[3] - 1
+
   elif direction == 2:  # East
+
     return character[2] + 1, character[3]
+
   elif direction == 3:  # South
+
     return character[2], character[3] + 1
+
   elif direction == 4:  # West
+  
     return character[2] - 1, character[3]
