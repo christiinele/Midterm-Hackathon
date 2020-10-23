@@ -47,9 +47,14 @@ def print_game_map(map):
 def validate_move(direction, current_position_x, current_position_y):
   """Determine whether the player can move in a direction
 
-  A function which restricts the player's movement to the boundaries of the 5 by 5 map. 
+  A function which restricts the player's movement to the boundaries of the 5 by 5 map. To be used in combination with function 'movement'
 
-  
+  :param direction: an integer from 1 to 4
+  :param current_position_x: an integer
+  :param current_position_y:
+  :precondition:
+  :postcondition:  
+  :return:
 
   do doctests for this one
   """

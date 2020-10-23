@@ -17,27 +17,29 @@ def monster_generator():
   :return: list of monster's information
   """
 
-  monster = ["", 5, ""]  # Monster name, health, attack type
+  # Monster name, health, attack type
+  types_of_monsters = [
+    ("goblin", "stabs", [5]),
+    ("orc", "punches", [5]),
+    ("fairy", "throws a fireball at", [5]),
+    ("viper", "bites", [5])]
+
   monster_type = rng.roll_4()
 
   if monster_type == 1:
 
-    monster[0] = "goblin"
-    monster[2] = "stabs"
+    monster = types_of_monsters[0]
 
   elif monster_type == 2:
 
-    monster[0] = "orc"
-    monster[2] = "punches"
+    monster = types_of_monsters[1]
 
   elif monster_type == 3:
 
-    monster[0] = "fairy"
-    monster[2] = "throws a fireball at"
+    monster = types_of_monsters[2]
     
   else:
-    monster[0] = "viper"
-    monster[2] = "bites"
+    monster = types_of_monsters[3]
 
   return monster
 
@@ -78,19 +80,17 @@ def encounter_choice(character_health):
 
   print(f"\nYou've encountered a(n) {monster[0]}!\n")
 
-  while encounter_choice != 1 and encounter_choice != 2:
+  while encounter_choice != "1" and encounter_choice != "2":
 
     encounter_choice = input("Will you: \n\n 1. Fight \n 2. Flee \n\n")
 
     if encounter_choice == "1" or encounter_choice == "2":
 
-      encounter_choice = int(encounter_choice)
-
-      if encounter_choice == 1:
+      if encounter_choice == "1":
 
         character_health = monster_encounter(character_health, monster)
 
-      elif encounter_choice == 2:
+      elif encounter_choice == "2":
 
         if rng.roll_10() == 1:
 
@@ -118,16 +118,16 @@ def player_initiative(character_health, monster):
   """
 
   player_damage = rng.roll_6()
-  monster[1] -= player_damage
+  monster[2][0] -= player_damage
   
   print(f"\nYou gain initiative and strike first! You slice the {monster[0]} for {player_damage} damage!")
   
-  if monster[1] > 0:
+  if monster[2][0] > 0:
     
     monster_damage = rng.roll_6()
     character_health -= monster_damage
     
-    print(f"\nThe {monster[0]} now has {monster[1]} health. It {monster[2]} you for {monster_damage} damage! You have {character_health} health points remaining.")
+    print(f"\nThe {monster[0]} now has {monster[2][0]} health. It {monster[1]} you for {monster_damage} damage! You have {character_health} health points remaining.")
 
     return character_health
     
@@ -154,7 +154,7 @@ def monster_initiative(character_health, monster):
 
   character_health -= monster_damage
 
-  print(f"\nThe {monster[0]} gains initiative! It {monster[2]} you for {monster_damage}. You have {character_health} health points remaining.")
+  print(f"\nThe {monster[0]} gains initiative! It {monster[1]} you for {monster_damage}. You have {character_health} health points remaining.")
 
   if character_health <= 0:
 
@@ -163,11 +163,11 @@ def monster_initiative(character_health, monster):
   if character_health > 0:
 
     player_damage = rng.roll_6()
-    monster[1] -= player_damage
+    monster[2][0] -= player_damage
     
     print(f"\nYou brandish your trusty sword and do {player_damage} damage to the {monster[0]}!")
     
-    if monster[1] < 0:
+    if monster[2][0] < 0:
 
       print(f"\nYou have defeated the {monster[0]}!")
 
@@ -190,7 +190,7 @@ def monster_encounter(character, monster):
   :return: character information following the battle
   """
 
-  while character[1] > 0 and monster[1] > 0:
+  while character[1] > 0 and monster[2][0] > 0:
 
     if check_initiative() == 0:
       character[1] = player_initiative(character[1], monster)
